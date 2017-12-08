@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pokemon.DB.PokemonDbHelper;
@@ -39,7 +40,8 @@ public class AddPokemonActivity extends AppCompatActivity implements View.OnClic
         mPokemonTitleEditText = findViewById(R.id.pokemon_title_edit_text);
         mPokemonImegeView = findViewById(R.id.pokemon_image_view);
         mSaveButton = findViewById(R.id.save_button);
-
+        TextView statusTextView = findViewById(R.id.status_textView);
+        statusTextView.setText("");
         //เมือกดรูป
         //กำหนดให้ Activity เป็น Listener ของ Image View
         mPokemonImegeView.setOnClickListener(this);//ให้คลาสหลักเป็นลิสเซอเนอ

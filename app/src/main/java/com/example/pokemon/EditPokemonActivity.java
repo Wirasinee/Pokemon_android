@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pokemon.DB.PokemonDbHelper;
@@ -31,6 +32,7 @@ public class EditPokemonActivity extends AppCompatActivity implements View.OnCli
     private ImageView mPokemonImegeView;
     private Button mSaveButton;
     private File mSelectedPictureFile;
+    private TextView mStatusTextView;
     private static final String TAG = AddPokemonActivity.class.getName();
 
     @Override
@@ -42,7 +44,8 @@ public class EditPokemonActivity extends AppCompatActivity implements View.OnCli
         mPokemonTitleEditText = findViewById(R.id.pokemon_title_edit_text);
         mPokemonImegeView = findViewById(R.id.pokemon_image_view);
         mSaveButton = findViewById(R.id.save_button);
-
+        mStatusTextView = findViewById(R.id.status_textView);
+        mStatusTextView.setText("รูปภาพเดิม");
         //เมือกดรูป
         //กำหนดให้ Activity เป็น Listener ของ Image View
         mPokemonImegeView.setOnClickListener(this);//ให้คลาสหลักเป็นลิสเซอเนอ
@@ -84,7 +87,7 @@ public class EditPokemonActivity extends AppCompatActivity implements View.OnCli
             //แล้วใช้คำสั่งจากไลบารี
             EasyImage.openChooserWithGallery(EditPokemonActivity.this, "ถ่ายรูปหรือเลือกรูปภาพที่ต้องการ", 0);//เรียกใช้ให้ผู้ใช้เลือกภาพหรือถ่ายภาพ
 //ไป(3)
-
+            mStatusTextView.setText("");
         }else if(viewId==R.id.save_button){
             //(4)ย้ายภาพที่ผู้ใช้เอามาลงไปไว้ที่private เผือกรณีผู้ใช้ล้างแคส
             if(mSelectedPictureFile==null){
