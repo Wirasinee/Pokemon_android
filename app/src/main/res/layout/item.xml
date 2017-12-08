@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+
+        android:id="@+id/pokemon_image_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="8dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/pokemon_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/pokemon_image_view"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.ExpandedMenu.Item" />
+
+    <TextView
+        android:id="@+id/pokemon_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pokemon_image_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/pokemon_name_text_view"
+        android:layout_toEndOf="@+id/pokemon_image_view"
+        android:layout_toRightOf="@+id/pokemon_image_view"
+        android:gravity="center_vertical"
+        android:text="TextView" />
+</RelativeLayout>
