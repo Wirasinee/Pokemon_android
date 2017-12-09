@@ -91,21 +91,23 @@ public class EditPokemonActivity extends AppCompatActivity implements View.OnCli
         }else if(viewId==R.id.save_button){
             //(4)ย้ายภาพที่ผู้ใช้เอามาลงไปไว้ที่private เผือกรณีผู้ใช้ล้างแคส
             if(mSelectedPictureFile==null){
-                Toast.makeText(
+                /*Toast.makeText(
                         getApplicationContext(),
                         "คุณยังไม่ได้เลือกรูปภาพ",
                         Toast.LENGTH_LONG
                 ).show();
-                return;
+                return;*/
             }
-            File privateDir=getApplicationContext().getFilesDir();
-            File datFile = new File(privateDir,mSelectedPictureFile.getName());
-            try {
-                copyFile(mSelectedPictureFile,datFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.e(TAG,"Error copying picture file.");
-                return;
+            else {
+                File privateDir = getApplicationContext().getFilesDir();
+                File datFile = new File(privateDir, mSelectedPictureFile.getName());
+                try {
+                    copyFile(mSelectedPictureFile, datFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Error copying picture file.");
+                    return;
+                }
             }
             editDataToDb();//(5) ออกข้อสอบ
             setResult(RESULT_OK);//(8)
@@ -126,7 +128,14 @@ public class EditPokemonActivity extends AppCompatActivity implements View.OnCli
         int id = intent.getIntExtra("pokemonID",0);
         String pokemonName = mPokemonNameEditText.getText().toString();
         String pokemonTitle = mPokemonTitleEditText.getText().toString();
-        String pictureFileName=mSelectedPictureFile.getName();//ชื่อไฟล์รูปที่ผู้ใช้ใส่เข้ามา
+        String pokemonPicture = intent.getStringExtra("pokemonPicture");
+        //String pictureFileName=mSelectedPictureFile.getName();//ชื่อไฟล์รูปที่ผู้ใช้ใส่เข้ามา
+        String pictureFileName;
+        if(mSelectedPictureFile==null){
+            pictureFileName=pokemonPicture;
+        }else{
+            pictureFileName=mSelectedPictureFile.getName();
+        }
 
 
         //saveลงDBโดย
