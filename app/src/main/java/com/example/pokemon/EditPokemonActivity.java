@@ -98,7 +98,7 @@ public class EditPokemonActivity extends AppCompatActivity implements View.OnCli
                 ).show();
                 return;*/
             }
-            else {
+            else { 
                 File privateDir = getApplicationContext().getFilesDir();
                 File datFile = new File(privateDir, mSelectedPictureFile.getName());
                 try {
